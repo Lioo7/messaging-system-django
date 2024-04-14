@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ..messages.views import write_message
+from ..messages.views import write_message, get_all_messages, get_unread_messages
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/messages/write/", write_message)
+    path("api/messages/write/", write_message),
+    path("api/messages/all/", get_all_messages),
+    path("api/messahes/unread/", get_unread_messages)
 ]
