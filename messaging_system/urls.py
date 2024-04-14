@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from ..messages.views import write_message
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api/messages/write/", write_message)
 ]
