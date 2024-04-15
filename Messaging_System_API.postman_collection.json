@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "1f88282a-34eb-44bd-aeed-1ab0496416fc",
-		"name": "Messaging System API",
+		"name": "Messaging_System_API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17892869"
 	},
@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}\n",
+					"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"z7KMAZhnBpUgJEL\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,13 +21,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/token/",
+					"raw": "http://54.235.55.114:8000/api/token/",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"235",
+						"55",
+						"114"
 					],
 					"port": "8000",
 					"path": [
@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}\n",
+							"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"z7KMAZhnBpUgJEL\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -53,13 +53,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/token/",
+							"raw": "http://54.235.55.114:8000/api/token/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"54",
+								"235",
+								"55",
+								"114"
 							],
 							"port": "8000",
 							"path": [
@@ -74,12 +74,16 @@
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
-							"key": "Date",
-							"value": "Mon, 15 Apr 2024 16:24:12 GMT"
+							"key": "Server",
+							"value": "gunicorn"
 						},
 						{
-							"key": "Server",
-							"value": "WSGIServer/0.2 CPython/3.11.6"
+							"key": "Date",
+							"value": "Mon, 15 Apr 2024 20:07:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
 						},
 						{
 							"key": "Content-Type",
@@ -115,7 +119,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxMzI4NDY1MiwiaWF0IjoxNzEzMTk4MjUyLCJqdGkiOiJlZTU4YTA0ZGEzNmI0MjkyYWFiYzMwN2FkMTlkZDliOSIsInVzZXJfaWQiOjF9.MK2ZmvwHeSEaqk3Lj3FjfngyeUED6b6Nlpb1Az8jVRw\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMTk4NTUyLCJpYXQiOjE3MTMxOTgyNTIsImp0aSI6ImEzMjEyOTFjY2E0MzQxZjU5MmY4NTZjMTZlYjliYTE3IiwidXNlcl9pZCI6MX0.fPhMNbcJicObYi25FwN7iGR9PID454UHlCXHipdvTm8\"\n}"
+					"body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxMzI5ODAyOCwiaWF0IjoxNzEzMjExNjI4LCJqdGkiOiJkOWJhZjkyOTZjMzY0NzExOGZmN2U3ZjZmM2JlYTU2NiIsInVzZXJfaWQiOjJ9.Do9aNm6sDwJoH9qpQ1ft1BvzKfSjYvFWzdopaXDZLEM\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMjExOTI4LCJpYXQiOjE3MTMyMTE2MjgsImp0aSI6ImViOGYwZTJlYThiYzRhYjU4NDAwZmFlOGYxMTA3ZmJmIiwidXNlcl9pZCI6Mn0.XSsViSHN_DMmKFvgXiBKZqN0OY1Zf5NPOVBcJAiNEmU\"\n}"
 				}
 			]
 		},
@@ -126,7 +130,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxMzI4NDY1MiwiaWF0IjoxNzEzMTk4MjUyLCJqdGkiOiJlZTU4YTA0ZGEzNmI0MjkyYWFiYzMwN2FkMTlkZDliOSIsInVzZXJfaWQiOjF9.MK2ZmvwHeSEaqk3Lj3FjfngyeUED6b6Nlpb1Az8jVRw\"\n}\n",
+					"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxMzI5ODAyOCwiaWF0IjoxNzEzMjExNjI4LCJqdGkiOiJkOWJhZjkyOTZjMzY0NzExOGZmN2U3ZjZmM2JlYTU2NiIsInVzZXJfaWQiOjJ9.Do9aNm6sDwJoH9qpQ1ft1BvzKfSjYvFWzdopaXDZLEM\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -134,13 +138,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/token/refresh/",
+					"raw": "http://54.235.55.114:8000/api/token/refresh/",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"235",
+						"55",
+						"114"
 					],
 					"port": "8000",
 					"path": [
@@ -159,7 +163,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxMzI4NDY1MiwiaWF0IjoxNzEzMTk4MjUyLCJqdGkiOiJlZTU4YTA0ZGEzNmI0MjkyYWFiYzMwN2FkMTlkZDliOSIsInVzZXJfaWQiOjF9.MK2ZmvwHeSEaqk3Lj3FjfngyeUED6b6Nlpb1Az8jVRw\"\n}\n",
+							"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxMzI5ODAyOCwiaWF0IjoxNzEzMjExNjI4LCJqdGkiOiJkOWJhZjkyOTZjMzY0NzExOGZmN2U3ZjZmM2JlYTU2NiIsInVzZXJfaWQiOjJ9.Do9aNm6sDwJoH9qpQ1ft1BvzKfSjYvFWzdopaXDZLEM\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -167,13 +171,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/token/refresh/",
+							"raw": "http://54.235.55.114:8000/api/token/refresh/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"54",
+								"235",
+								"55",
+								"114"
 							],
 							"port": "8000",
 							"path": [
@@ -189,12 +193,16 @@
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
-							"key": "Date",
-							"value": "Mon, 15 Apr 2024 16:24:51 GMT"
+							"key": "Server",
+							"value": "gunicorn"
 						},
 						{
-							"key": "Server",
-							"value": "WSGIServer/0.2 CPython/3.11.6"
+							"key": "Date",
+							"value": "Mon, 15 Apr 2024 20:09:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
 						},
 						{
 							"key": "Content-Type",
@@ -230,7 +238,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMTk4NTkxLCJpYXQiOjE3MTMxOTgyNTIsImp0aSI6IjkyYmVkYzYxNjk2ZTRjMWJhNGVhYTk2MjdlNjE1OWJlIiwidXNlcl9pZCI6MX0._IO4n_iS37iW3b2N3EZfllO8p5sODMhSek8fkJozaiQ\"\n}"
+					"body": "{\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMjEyMDY2LCJpYXQiOjE3MTMyMTE2MjgsImp0aSI6IjdjNTNhZjQwMzMwNjQ0ZGM5MzcyZDQ1OWQ2OTQzNGZmIiwidXNlcl9pZCI6Mn0.ks6nktOsIkudm1BUzVh9Fs2EXahDu6ii1Ir3u1eqP7o\"\n}"
 				}
 			]
 		},
@@ -242,7 +250,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMTk4NTkxLCJpYXQiOjE3MTMxOTgyNTIsImp0aSI6IjkyYmVkYzYxNjk2ZTRjMWJhNGVhYTk2MjdlNjE1OWJlIiwidXNlcl9pZCI6MX0._IO4n_iS37iW3b2N3EZfllO8p5sODMhSek8fkJozaiQ",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMjEyMDY2LCJpYXQiOjE3MTMyMTE2MjgsImp0aSI6IjdjNTNhZjQwMzMwNjQ0ZGM5MzcyZDQ1OWQ2OTQzNGZmIiwidXNlcl9pZCI6Mn0.ks6nktOsIkudm1BUzVh9Fs2EXahDu6ii1Ir3u1eqP7o",
 							"type": "string"
 						}
 					]
@@ -251,7 +259,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"sender\": 1,\n  \"receiver\": 2,\n  \"subject\": \"Test Message #5\",\n  \"content\": \"This is a test message.\"\n}",
+					"raw": "{\n  \"sender\": 2,\n  \"receiver\": 1,\n  \"subject\": \"Test Message - response #3\",\n  \"content\": \"This is a test message.\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -259,13 +267,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/messaging/write/",
+					"raw": "http://54.235.55.114:8000/api/messaging/write/",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"235",
+						"55",
+						"114"
 					],
 					"port": "8000",
 					"path": [
@@ -284,7 +292,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"sender\": 1,\n  \"receiver\": 2,\n  \"subject\": \"Test Message #5\",\n  \"content\": \"This is a test message.\"\n}",
+							"raw": "{\n  \"sender\": 2,\n  \"receiver\": 1,\n  \"subject\": \"Test Message - response #1\",\n  \"content\": \"This is a test message.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -292,13 +300,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/messaging/write/",
+							"raw": "http://54.235.55.114:8000/api/messaging/write/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"54",
+								"235",
+								"55",
+								"114"
 							],
 							"port": "8000",
 							"path": [
@@ -314,12 +322,16 @@
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
-							"key": "Date",
-							"value": "Mon, 15 Apr 2024 16:25:33 GMT"
+							"key": "Server",
+							"value": "gunicorn"
 						},
 						{
-							"key": "Server",
-							"value": "WSGIServer/0.2 CPython/3.11.6"
+							"key": "Date",
+							"value": "Mon, 15 Apr 2024 20:11:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
 						},
 						{
 							"key": "Content-Type",
@@ -332,333 +344,6 @@
 						{
 							"key": "Allow",
 							"value": "OPTIONS, POST"
-						},
-						{
-							"key": "X-Frame-Options",
-							"value": "DENY"
-						},
-						{
-							"key": "Content-Length",
-							"value": "161"
-						},
-						{
-							"key": "X-Content-Type-Options",
-							"value": "nosniff"
-						},
-						{
-							"key": "Referrer-Policy",
-							"value": "same-origin"
-						},
-						{
-							"key": "Cross-Origin-Opener-Policy",
-							"value": "same-origin"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 30,\n    \"sender\": 1,\n    \"receiver\": 2,\n    \"subject\": \"Test Message #5\",\n    \"content\": \"This is a test message.\",\n    \"created_at\": \"2024-04-15T19:25:33.429625+03:00\",\n    \"is_read\": false\n}"
-				}
-			]
-		},
-		{
-			"name": "Get All Messages",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMTk4NTkxLCJpYXQiOjE3MTMxOTgyNTIsImp0aSI6IjkyYmVkYzYxNjk2ZTRjMWJhNGVhYTk2MjdlNjE1OWJlIiwidXNlcl9pZCI6MX0._IO4n_iS37iW3b2N3EZfllO8p5sODMhSek8fkJozaiQ",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/messaging/messages/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"messaging",
-						"messages",
-						""
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Get All Messages",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/messaging/messages/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"messaging",
-								"messages",
-								""
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Date",
-							"value": "Mon, 15 Apr 2024 16:25:47 GMT"
-						},
-						{
-							"key": "Server",
-							"value": "WSGIServer/0.2 CPython/3.11.6"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Vary",
-							"value": "Accept"
-						},
-						{
-							"key": "Allow",
-							"value": "GET, OPTIONS"
-						},
-						{
-							"key": "X-Frame-Options",
-							"value": "DENY"
-						},
-						{
-							"key": "Content-Length",
-							"value": "1005"
-						},
-						{
-							"key": "X-Content-Type-Options",
-							"value": "nosniff"
-						},
-						{
-							"key": "Referrer-Policy",
-							"value": "same-origin"
-						},
-						{
-							"key": "Cross-Origin-Opener-Policy",
-							"value": "same-origin"
-						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"id\": 27,\n        \"sender\": 1,\n        \"receiver\": 2,\n        \"subject\": \"Test Message #2 | Response\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T17:13:01.573058+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 28,\n        \"sender\": 1,\n        \"receiver\": 2,\n        \"subject\": \"Test Message #3 | Response\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T17:13:04.214321+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 29,\n        \"sender\": 1,\n        \"receiver\": 2,\n        \"subject\": \"Test Message #4 | Response\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T17:35:57.726365+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 30,\n        \"sender\": 1,\n        \"receiver\": 2,\n        \"subject\": \"Test Message #5\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T19:25:33.429625+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 24,\n        \"sender\": 2,\n        \"receiver\": 1,\n        \"subject\": \"Test Message #2\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T17:12:15.006968+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 25,\n        \"sender\": 2,\n        \"receiver\": 1,\n        \"subject\": \"Test Message #3\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T17:12:18.945972+03:00\",\n        \"is_read\": true\n    }\n]"
-				}
-			]
-		},
-		{
-			"name": "Get Unread Messages",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMTk4NTkxLCJpYXQiOjE3MTMxOTgyNTIsImp0aSI6IjkyYmVkYzYxNjk2ZTRjMWJhNGVhYTk2MjdlNjE1OWJlIiwidXNlcl9pZCI6MX0._IO4n_iS37iW3b2N3EZfllO8p5sODMhSek8fkJozaiQ",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/messaging/messages/unread/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"messaging",
-						"messages",
-						"unread",
-						""
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Get Unread Messages",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/messaging/messages/unread/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"messaging",
-								"messages",
-								"unread",
-								""
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Date",
-							"value": "Mon, 15 Apr 2024 16:25:58 GMT"
-						},
-						{
-							"key": "Server",
-							"value": "WSGIServer/0.2 CPython/3.11.6"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Vary",
-							"value": "Accept"
-						},
-						{
-							"key": "Allow",
-							"value": "GET, OPTIONS"
-						},
-						{
-							"key": "X-Frame-Options",
-							"value": "DENY"
-						},
-						{
-							"key": "Content-Length",
-							"value": "163"
-						},
-						{
-							"key": "X-Content-Type-Options",
-							"value": "nosniff"
-						},
-						{
-							"key": "Referrer-Policy",
-							"value": "same-origin"
-						},
-						{
-							"key": "Cross-Origin-Opener-Policy",
-							"value": "same-origin"
-						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"id\": 24,\n        \"sender\": 2,\n        \"receiver\": 1,\n        \"subject\": \"Test Message #2\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T17:12:15.006968+03:00\",\n        \"is_read\": false\n    }\n]"
-				}
-			]
-		},
-		{
-			"name": "Read Message",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMTk4NTkxLCJpYXQiOjE3MTMxOTgyNTIsImp0aSI6IjkyYmVkYzYxNjk2ZTRjMWJhNGVhYTk2MjdlNjE1OWJlIiwidXNlcl9pZCI6MX0._IO4n_iS37iW3b2N3EZfllO8p5sODMhSek8fkJozaiQ",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/messaging/messages/27/read/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"messaging",
-						"messages",
-						"27",
-						"read",
-						""
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Read Message",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/messaging/messages/27/read/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"messaging",
-								"messages",
-								"27",
-								"read",
-								""
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Date",
-							"value": "Mon, 15 Apr 2024 16:26:37 GMT"
-						},
-						{
-							"key": "Server",
-							"value": "WSGIServer/0.2 CPython/3.11.6"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Vary",
-							"value": "Accept"
-						},
-						{
-							"key": "Allow",
-							"value": "GET, OPTIONS"
 						},
 						{
 							"key": "X-Frame-Options",
@@ -682,7 +367,346 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"id\": 27,\n    \"sender\": 1,\n    \"receiver\": 2,\n    \"subject\": \"Test Message #2 | Response\",\n    \"content\": \"This is a test message.\",\n    \"created_at\": \"2024-04-15T17:13:01.573058+03:00\",\n    \"is_read\": true\n}"
+					"body": "{\n    \"id\": 4,\n    \"sender\": 2,\n    \"receiver\": 1,\n    \"subject\": \"Test Message - response #1\",\n    \"content\": \"This is a test message.\",\n    \"created_at\": \"2024-04-15T23:11:25.025411+03:00\",\n    \"is_read\": false\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Messages",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMjEyMDY2LCJpYXQiOjE3MTMyMTE2MjgsImp0aSI6IjdjNTNhZjQwMzMwNjQ0ZGM5MzcyZDQ1OWQ2OTQzNGZmIiwidXNlcl9pZCI6Mn0.ks6nktOsIkudm1BUzVh9Fs2EXahDu6ii1Ir3u1eqP7o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://54.235.55.114:8000/api/messaging/messages/",
+					"protocol": "http",
+					"host": [
+						"54",
+						"235",
+						"55",
+						"114"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"messaging",
+						"messages",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All Messages",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://54.235.55.114:8000/api/messaging/messages/",
+							"protocol": "http",
+							"host": [
+								"54",
+								"235",
+								"55",
+								"114"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"messaging",
+								"messages",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "gunicorn"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 Apr 2024 20:12:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, GET"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1000"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 4,\n        \"sender\": 2,\n        \"receiver\": 1,\n        \"subject\": \"Test Message - response #1\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T23:11:25.025411+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 5,\n        \"sender\": 2,\n        \"receiver\": 1,\n        \"subject\": \"Test Message - response #2\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T23:11:42.696947+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 6,\n        \"sender\": 2,\n        \"receiver\": 1,\n        \"subject\": \"Test Message - response #3\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T23:11:45.726168+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 1,\n        \"sender\": 1,\n        \"receiver\": 2,\n        \"subject\": \"Test Message #1\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T23:04:04.050411+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 2,\n        \"sender\": 1,\n        \"receiver\": 2,\n        \"subject\": \"Test Message #2\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T23:04:21.370030+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 3,\n        \"sender\": 1,\n        \"receiver\": 2,\n        \"subject\": \"Test Message #3\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T23:04:25.111824+03:00\",\n        \"is_read\": false\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Unread Messages",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMjEyMDY2LCJpYXQiOjE3MTMyMTE2MjgsImp0aSI6IjdjNTNhZjQwMzMwNjQ0ZGM5MzcyZDQ1OWQ2OTQzNGZmIiwidXNlcl9pZCI6Mn0.ks6nktOsIkudm1BUzVh9Fs2EXahDu6ii1Ir3u1eqP7o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://54.235.55.114:8000/api/messaging/messages/unread/",
+					"protocol": "http",
+					"host": [
+						"54",
+						"235",
+						"55",
+						"114"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"messaging",
+						"messages",
+						"unread",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Unread Messages",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://54.235.55.114:8000/api/messaging/messages/unread/",
+							"protocol": "http",
+							"host": [
+								"54",
+								"235",
+								"55",
+								"114"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"messaging",
+								"messages",
+								"unread",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "gunicorn"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 Apr 2024 20:13:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, GET"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "323"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 2,\n        \"sender\": 1,\n        \"receiver\": 2,\n        \"subject\": \"Test Message #2\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T23:04:21.370030+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 3,\n        \"sender\": 1,\n        \"receiver\": 2,\n        \"subject\": \"Test Message #3\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-04-15T23:04:25.111824+03:00\",\n        \"is_read\": false\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Read Message",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMjEyMDY2LCJpYXQiOjE3MTMyMTE2MjgsImp0aSI6IjdjNTNhZjQwMzMwNjQ0ZGM5MzcyZDQ1OWQ2OTQzNGZmIiwidXNlcl9pZCI6Mn0.ks6nktOsIkudm1BUzVh9Fs2EXahDu6ii1Ir3u1eqP7o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://54.235.55.114:8000/api/messaging/messages/1/read/",
+					"protocol": "http",
+					"host": [
+						"54",
+						"235",
+						"55",
+						"114"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"messaging",
+						"messages",
+						"1",
+						"read",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Read Message",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://54.235.55.114:8000/api/messaging/messages/1/read/",
+							"protocol": "http",
+							"host": [
+								"54",
+								"235",
+								"55",
+								"114"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"messaging",
+								"messages",
+								"1",
+								"read",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "gunicorn"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 Apr 2024 20:12:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, GET"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "159"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"sender\": 1,\n    \"receiver\": 2,\n    \"subject\": \"Test Message #1\",\n    \"content\": \"This is a test message.\",\n    \"created_at\": \"2024-04-15T23:04:04.050411+03:00\",\n    \"is_read\": true\n}"
 				}
 			]
 		},
@@ -694,7 +718,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMTk4NTkxLCJpYXQiOjE3MTMxOTgyNTIsImp0aSI6IjkyYmVkYzYxNjk2ZTRjMWJhNGVhYTk2MjdlNjE1OWJlIiwidXNlcl9pZCI6MX0._IO4n_iS37iW3b2N3EZfllO8p5sODMhSek8fkJozaiQ",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMjEyMDY2LCJpYXQiOjE3MTMyMTE2MjgsImp0aSI6IjdjNTNhZjQwMzMwNjQ0ZGM5MzcyZDQ1OWQ2OTQzNGZmIiwidXNlcl9pZCI6Mn0.ks6nktOsIkudm1BUzVh9Fs2EXahDu6ii1Ir3u1eqP7o",
 							"type": "string"
 						}
 					]
@@ -702,20 +726,20 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/messaging/messages/28/delete/",
+					"raw": "http://54.235.55.114:8000/api/messaging/messages/6/delete/",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"235",
+						"55",
+						"114"
 					],
 					"port": "8000",
 					"path": [
 						"api",
 						"messaging",
 						"messages",
-						"28",
+						"6",
 						"delete",
 						""
 					]
@@ -728,20 +752,20 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/messaging/messages/28/delete/",
+							"raw": "http://54.235.55.114:8000/api/messaging/messages/6/delete/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"54",
+								"235",
+								"55",
+								"114"
 							],
 							"port": "8000",
 							"path": [
 								"api",
 								"messaging",
 								"messages",
-								"28",
+								"6",
 								"delete",
 								""
 							]
@@ -752,12 +776,16 @@
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
-							"key": "Date",
-							"value": "Mon, 15 Apr 2024 16:27:06 GMT"
+							"key": "Server",
+							"value": "gunicorn"
 						},
 						{
-							"key": "Server",
-							"value": "WSGIServer/0.2 CPython/3.11.6"
+							"key": "Date",
+							"value": "Mon, 15 Apr 2024 20:13:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
 						},
 						{
 							"key": "Content-Type",
@@ -769,7 +797,7 @@
 						},
 						{
 							"key": "Allow",
-							"value": "OPTIONS, DELETE"
+							"value": "DELETE, OPTIONS"
 						},
 						{
 							"key": "X-Frame-Options",
