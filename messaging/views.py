@@ -4,10 +4,14 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.utils.translation import gettext as _
+from django.http import HttpResponse
 from .utils import get_message
 from .models import Messaging
 from .serializers import MessagingSerializer
 
+
+def index(request):
+    return HttpResponse("Welcome to Messaging System!")
 
 # Handles writing a new message
 @api_view(['POST'])
