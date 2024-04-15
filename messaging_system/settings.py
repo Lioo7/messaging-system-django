@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['messaging-system-django.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['54.235.55.114', 'messaging-system-django.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
