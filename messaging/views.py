@@ -1,17 +1,31 @@
+from django.utils.translation import gettext as _
+from django.urls import resolve
 from rest_framework import status
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from django.utils.translation import gettext as _
-from django.http import HttpResponse
 from .utils import get_message
 from .models import Messaging
 from .serializers import MessagingSerializer
 
 
+# Returns a list of all available API endpoints
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([AllowAny])
 def index(request):
-    return HttpResponse("Welcome to Messaging System!")
+    return Response({
+        'message': 'Welcome to the Messaging System!',
+        'endpoints': {
+            'write_message': '/api/messaging/write/',
+            'get_all_messages': '/api/messaging/messages/',
+            'get_unread_messages': '/api/messaging/messages/unread/',
+            'read_message': '/api/messaging/messages/<int:message_id>/read/',
+            'delete_message': '/api/messaging/messages/<int:message_id>/delete/',
+        }
+    })
+
 
 # Handles writing a new message
 @api_view(['POST'])
