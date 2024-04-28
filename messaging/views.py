@@ -1,5 +1,3 @@
-# from django.utils.translation import gettext as _
-# from django.urls import resolve
 from rest_framework import status
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
@@ -10,11 +8,19 @@ from .models import Messaging
 from .serializers import MessagingSerializer
 
 
-# Returns a list of all available API endpoints
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([AllowAny])
 def index(request):
+    """
+    Returns a list of all available API endpoints.
+
+    Parameters:
+    - request: The HTTP request object.
+
+    Returns:
+    - Response: HTTP response containing a list of available endpoints.
+    """
     return Response({
         'message': 'Welcome to the Messaging System!',
         'endpoints': {
@@ -27,11 +33,19 @@ def index(request):
     })
 
 
-# Handles writing a new message
 @api_view(['POST'])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def write_message(request):
+    """
+    Handles writing a new message.
+
+    Parameters:
+    - request: The HTTP request object.
+
+    Returns:
+    - Response: HTTP response indicating the outcome of the write operation.
+    """
     serializer = MessagingSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save(sender=request.user)
@@ -39,31 +53,57 @@ def write_message(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# Retrieves all messages sent or received by the authenticated user
 @api_view(['GET'])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def get_all_messages(request):
+    """
+    Retrieves all messages sent or received by the authenticated user.
+
+    Parameters:
+    - request: The HTTP request object.
+
+    Returns:
+    - Response: HTTP response containing the list of messages.
+    """
     messages = get_message(user=request.user)
     serializer = MessagingSerializer(messages, many=True)
     return Response(serializer.data)
 
 
-# Retrieves all unread messages for the authenticated user
 @api_view(['GET'])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def get_unread_messages(request):
+    """
+    Retrieves all unread messages for the authenticated user.
+
+    Parameters:
+    - request: The HTTP request object.
+
+    Returns:
+    - Response: HTTP response containing the list of unread messages.
+    """
     unread_messages = Messaging.objects.filter(receiver=request.user, is_read=False)
     serializer = MessagingSerializer(unread_messages, many=True)
     return Response(serializer.data)
 
 
-# Reads a message by its ID, marks it as read, and returns the message data
 @api_view(['GET'])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def read_message(request, message_id):
+    """
+    Reads a message by its ID, marks it as read if the user is
+    the receiver of the message, and returns the message data.
+
+    Parameters:
+    - request: The HTTP request object.
+    - message_id (int): The ID of the message to read.
+
+    Returns:
+    - Response: HTTP response containing the message data.
+    """
     message = get_message(message_id=message_id, user=request.user)
     if message is None:
         return Response({"error": "Message not found."}, status=status.HTTP_404_NOT_FOUND)
@@ -76,17 +116,25 @@ def read_message(request, message_id):
     return Response(serializer.data)
 
 
-# Deletes a message by its ID
 @api_view(['DELETE'])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def delete_message(request, message_id):
+    """
+    Deletes a message by its ID.
+
+    Parameters:
+    - request: The HTTP request object.
+    - message_id (int): The ID of the message to delete.
+
+    Returns:
+    - Response: HTTP response indicating the outcome of the deletion operation.
+    """
     message = get_message(message_id=message_id, user=request.user)
     if message is None:
         return Response({"error": "Message not found."}, status=status.HTTP_404_NOT_FOUND)
-
     if message.sender == request.user or message.receiver == request.user:
         message.delete()
-        return Response({"message": _("Message deleted successfully.")}, status=status.HTTP_204_NO_CONTENT)
+        return Response({"message": "Message deleted successfully."}, status=status.HTTP_204_NO_CONTENT)
     else:
         return Response({"error": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
