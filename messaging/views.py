@@ -1,5 +1,5 @@
-from django.utils.translation import gettext as _
-from django.urls import resolve
+# from django.utils.translation import gettext as _
+# from django.urls import resolve
 from rest_framework import status
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
@@ -68,7 +68,9 @@ def read_message(request, message_id):
     if message is None:
         return Response({"error": "Message not found."}, status=status.HTTP_404_NOT_FOUND)
 
-    message.is_read = True
+    # If the user is the receiver of the message, mark it as read
+    if message.receiver == request.user:
+        message.is_read = True
     message.save()
     serializer = MessagingSerializer(message)
     return Response(serializer.data)
