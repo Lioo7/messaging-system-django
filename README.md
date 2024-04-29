@@ -37,6 +37,10 @@ Visit the website to explore the Messaging System API: [Messaging System API](ht
    - Install Python.
    - Create and activate a virtual environment.
    - Install the required dependencies: `pip install -r requirements.txt`.
+   - Create a .env file in the project root directory and add the following line to it:
+     ```
+     SECRET_KEY=<your_secret_key_here>
+     ```
 
 2. **Running the Development Server**:
    - Apply database migrations: `python manage.py migrate`.
@@ -56,4 +60,12 @@ Explore the Postman collection provided in the project repository to test the AP
 The API relies on JWT (JSON Web Tokens) for authentication. Upon logging in, users receive an access token and a refresh token. The access token authenticates requests. Include the access token in the `Authorization` header of your requests as follows:
 ```
 Authorization: Bearer <access_token>
+```
+
+## Tests
+The test suite includes comprehensive coverage of the API endpoints and scenarios to ensure robustness and reliability.
+
+Run the following command to execute the tests:
+```
+python manage.py test
 ```
