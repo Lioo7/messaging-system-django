@@ -111,7 +111,7 @@ def read_message(request, message_id):
     # If the user is the receiver of the message, mark it as read
     if message.receiver == request.user:
         message.is_read = True
-    message.save()
+        message.save()
     serializer = MessagingSerializer(message)
     return Response(serializer.data)
 
