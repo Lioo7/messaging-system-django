@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.reverse import reverse
 from .utils import get_message
 from .models import Messaging
 from .serializers import MessagingSerializer
@@ -21,15 +22,19 @@ def index(request):
     Returns:
     - Response: HTTP response containing a list of available endpoints.
     """
+    endpoints = {
+        'write_message': reverse('write_message', request=request),
+        'get_all_messages': reverse('get_all_messages', request=request),
+        'get_unread_messages': reverse('get_unread_messages', request=request),
+        'read_message': reverse('read_message', args=[1], request=request),  # Example with message_id=1
+        'delete_message': reverse('delete_message', args=[1], request=request),  # Example with message_id=1
+        'token_obtain': reverse('token_obtain_pair', request=request),
+        'token_refresh': reverse('token_refresh', request=request),
+    }
+
     return Response({
         'message': 'Welcome to the Messaging System!',
-        'endpoints': {
-            'write_message': '/api/messaging/write/',
-            'get_all_messages': '/api/messaging/messages/',
-            'get_unread_messages': '/api/messaging/messages/unread/',
-            'read_message': '/api/messaging/messages/<int:message_id>/read/',
-            'delete_message': '/api/messaging/messages/<int:message_id>/delete/',
-        }
+        'endpoints': endpoints
     })
 
 

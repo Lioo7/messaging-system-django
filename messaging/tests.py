@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from rest_framework.test import APIClient
 from rest_framework import status
 from .models import Messaging
-from .serializers import MessagingSerializer
 
 
 class MessagingModelTests(TestCase):
