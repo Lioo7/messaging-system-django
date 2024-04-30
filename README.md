@@ -3,8 +3,8 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white" alt="Django">
   <img src="https://img.shields.io/badge/Django%20REST%20Framework-092E20?style=flat&logo=django&logoColor=white" alt="Django REST Framework">
-  <img src="https://img.shields.io/badge/AWS%20EC2-232F3E?style=flat&logo=amazonaws&logoColor=white" alt="AWS EC2">
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker">
   <img src="https://img.shields.io/badge/JSON%20Web%20Tokens-000000?style=flat&logo=jsonwebtokens&logoColor=white" alt="JSON Web Tokens">
 </p>
 
@@ -27,31 +27,33 @@ Visit the website to explore the Messaging System API: [Messaging System API](ht
 
 - **Django**: A high-level Python web framework for developing web applications.
 - **Django REST Framework**: A versatile toolkit for building Web APIs.
+- **Docker**: A platform for developing, shipping, and running applications in containers.
 - **JWT (JSON Web Tokens)**: An authentication standard used to secure the API.
-- **AWS EC2**: The API is hosted on an Amazon EC2 instance.
 - **Python**: The programming language used for development.
 
-## Getting Started
+## Getting Started (Development Environment)
 
 1. **Setting up the Development Environment**:
-   - Install Python.
-   - Create and activate a virtual environment.
-   - Install the required dependencies: `pip install -r requirements.txt`.
-   - Create a .env file in the project root directory and add the following line to it:
+   - Install Docker on your machine.
+   - Clone this repository.
+   - Navigate to the project directory.
+   - Create a `.env` file in the project root directory and add the following lines to it:
      ```
-     SECRET_KEY=<your_secret_key_here>
+     SECRET_KEY="your_secret_key"
+     DJANGO_SUPERUSER_USERNAME="your_django_superuser_username"
+     DJANGO_SUPERUSER_EMAIL="your_django_superuser_email"
+     DJANGO_SUPERUSER_PASSWORD="your_django_superuser_password"
      ```
-
-2. **Running the Development Server**:
-   - Apply database migrations: `python manage.py migrate`.
-   - Start the development server: `python manage.py runserver`.
+   
+2. **Running the Application with Docker**:
+   - Build the Docker image: `docker-compose build`.
+   - Start the Docker containers: `docker-compose up -d`.
+   - Access the API at `http://localhost:8000/`.
 
 3. **Creating Super User and Other Users**:
-   - To create a superuser (admin) for accessing the Django admin interface and performing administrative tasks:
-     ```
-     python manage.py createsuperuser
-     ```
-   - To create additional users, you can either use the Django admin interface or create users programmatically through Django's shell or management commands.
+   - A superuser (admin) will be created automatically during Docker container startup using the credentials provided in the `.env` file.
+   - Additional users can be created programmatically through Django's shell or management commands.
+
 
 ## Postman Collection
 
