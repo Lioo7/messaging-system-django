@@ -78,7 +78,7 @@ class MessageAPITests(TestCase):
 
     def test_get_unread_messages_api(self):
         # Test retrieving unread messages (which the receiver is the authenticated user)
-        response = self.client.get('/api/v1/messages/')
+        response = self.client.get('/api/v1/messages/?is_read=false/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 1)  # Ensure only one unread message is returned
 
