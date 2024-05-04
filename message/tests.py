@@ -63,20 +63,13 @@ class MessageAPITests(TestCase):
         response = self.client.post('/api/v1/messages/', data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
-    def test_create_message_api_unauthenticated(self):
-        # Test creating a message without authentication
-        self.client.force_authenticate(user=None)  # Remove authentication
-        data = {'sender': self.user_a.id, 'receiver': self.user_b.id, 'subject': 'Test Subject', 'content': 'Test Content'}
-        response = self.client.post('/api/v1/messages/', data)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-
     def test_get_all_messages_api(self):
         # Test retrieving all messages
         response = self.client.get('/api/v1/messages/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), len(self.messages))
 
-    def test_get_unread_messages_api(self):
+    def test_filter_messages_api(self):
         # Test retrieving unread messages (which the receiver is the authenticated user)
         response = self.client.get('/api/v1/messages/?is_read=false/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -94,6 +87,18 @@ class MessageAPITests(TestCase):
         response = self.client.get('/api/v1/messages/99999/')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
+    def test_update_message_api(self):
+        # Test updating a message
+        message_id = self.messages[1].id  # The second message
+        data = {'subject': 'Updated Subject', 'content': 'Updated Content'}
+        response = self.client.patch(f'/api/v1/messages/{message_id}/', data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        # Check that the message was updated in the database
+        updated_message = Message.objects.get(id=message_id)
+        self.assertEqual(updated_message.subject, 'Updated Subject')
+        self.assertEqual(updated_message.content, 'Updated Content')
+
     def test_delete_message_api_success(self):
         # Test deleting a message
         message_id = self.messages[1].id # The second message
@@ -108,3 +113,20 @@ class MessageAPITests(TestCase):
         # Test deleting a message that doesn't exist
         response = self.client.delete('/api/v1/messages/99999/')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_unauthenticated_access(self):
+        # Test accessing API endpoints without authentication
+        self.client.force_authenticate(user=None)  # Remove authentication
+        # Attempt to access the messages list endpoint
+        response = self.client.get('/api/v1/messages/')
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        # Attempt to access a specific message endpoint
+        message_id = self.messages[0].id
+        response = self.client.get(f'/api/v1/messages/{message_id}/')
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+
+class CsrfCookieEndpointTests(TestCase):
+    def test_csrf_cookie_endpoint(self):
+        response = self.client.get('/api/v1/csrf_cookie/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
