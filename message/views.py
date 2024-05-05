@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from .utils import get_message
+from .utils import get_messages
 from .models import Message
 from .serializers import MessageSerializer
 from .filters import MessageFilter
@@ -15,24 +15,23 @@ from .filters import MessageFilter
 class RootView(APIView):
     permission_classes = []  # Allow unauthenticated access
 
-    def get(self, request, format=None):
+    def get(self, request):
         # Assuming there is a message instance with pk=1
         message_pk = 1
         return Response({
             'message': 'Welcome to the Messaging System API!',
             'endpoints': {
                 'messages': {
-                    'list_create': reverse('message-list-create', request=request, format=format),
-                    'retrieve_update_destroy': reverse('message-detail', kwargs={'pk': message_pk}, request=request, format=format),
+                    'list_create': reverse('message-list-create', request=request),
+                    'retrieve_update_destroy': reverse('message-detail', kwargs={'pk': message_pk}, request=request),
                 },
                 'token': {
-                    'obtain': reverse('token_obtain_pair', request=request, format=format),
-                    'refresh': reverse('token_refresh', request=request, format=format),
+                    'obtain': reverse('token_obtain_pair', request=request,),
+                    'refresh': reverse('token_refresh', request=request),
                 },
-                'csrf_cookie': reverse('csrf_cookie', request=request, format=format),
+                'csrf_cookie': reverse('csrf_cookie', request=request),
             }
         })
-
 
 
 class MessageListCreateView(generics.ListCreateAPIView):
@@ -40,13 +39,12 @@ class MessageListCreateView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
     filter_class = MessageFilter
-    ordering_fields = ['id', 'created_at', 'is_read']
 
     def get_queryset(self):
         user = self.request.user  # The currently authenticated user
         is_read = self.request.query_params.get('is_read', None)
         # TODO: extract to utils
-        queryset = Message.objects.filter(models.Q(sender=user) | models.Q(receiver=user))
+        queryset = get_messages(user)
 
         if is_read is not None:
             is_read_bool = is_read.lower() == 'true/'
@@ -65,8 +63,7 @@ class MessageRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         user = self.request.user  # The currently authenticated user
-        # TODO: extract to utils
-        return Message.objects.filter(models.Q(sender=user) | models.Q(receiver=user))
+        return get_messages(user)
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
