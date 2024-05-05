@@ -8,10 +8,10 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.http import HttpResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 
-from message.views import MessageListCreateView, MessageRetrieveUpdateDestroyView
+from message.views import MessageListCreateView, MessageRetrieveUpdateDestroyView, RootView
 
 urlpatterns = [
-    # path("", index),
+    path('', RootView.as_view(), name='api-root'),
     path("admin/", admin.site.urls),
     path('api/v1/csrf_cookie/', ensure_csrf_cookie(lambda request: HttpResponse('CSRF cookie set')), name='csrf_cookie'),
     path("api/v1/token/", TokenObtainPairView.as_view(), name='token_obtain_pair'),
