@@ -1,5 +1,6 @@
-from .models import Message
 from django.db import models
+
+from .models import Message
 
 
 def get_message(message_id=None, user=None):

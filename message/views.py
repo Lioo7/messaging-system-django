@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
+
 from .utils import get_message
 from .models import Message
 from .serializers import MessageSerializer
@@ -15,6 +16,7 @@ class MessageListCreateView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
     filter_class = MessageFilter
+    ordering_fields = ['id', 'created_at', 'is_read']
 
     def get_queryset(self):
         user = self.request.user  # The currently authenticated user

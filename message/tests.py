@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from rest_framework.test import APIClient
 from rest_framework import status
+
 from .models import Message
 
 
@@ -35,8 +36,9 @@ class MessageAPITests(TestCase):
 
         # Create test messages
         message1 = Message.objects.create(sender=self.user_a, receiver=self.user_b, subject='Test Subject 1', content='Test Content 1', is_read=True)
-        message2 = Message.objects.create(sender=self.user_b, receiver=self.user_a, subject='Test Subject 2', content='Test Content 2')
-        self.messages = [message1, message2]
+        message2 = Message.objects.create(sender=self.user_b, receiver=self.user_a, subject='Test Subject 2', content='Test Content 2', is_read=True)
+        message3 = Message.objects.create(sender=self.user_b, receiver=self.user_a, subject='Test Subject 3', content='Test Content 3')
+        self.messages = [message1, message2, message3]
 
         self.client = APIClient()
 
@@ -87,8 +89,20 @@ class MessageAPITests(TestCase):
         response = self.client.get('/api/v1/messages/99999/')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_update_message_api(self):
-        # Test updating a message
+    def test_update_message_api_put(self):
+        # Test updating a message using PUT method
+        message_id = self.messages[1].id  # The second message
+        data = {'sender': self.user_a.id, 'receiver': self.user_b.id, 'subject': 'Updated Subject', 'content': 'Updated Content'}
+        response = self.client.put(f'/api/v1/messages/{message_id}/', data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        # Check that the message was updated in the database
+        updated_message = Message.objects.get(id=message_id)
+        self.assertEqual(updated_message.subject, 'Updated Subject')
+        self.assertEqual(updated_message.content, 'Updated Content')
+
+    def test_update_message_api_patch(self):
+        # Test updating a message using PATCH method
         message_id = self.messages[1].id  # The second message
         data = {'subject': 'Updated Subject', 'content': 'Updated Content'}
         response = self.client.patch(f'/api/v1/messages/{message_id}/', data)
