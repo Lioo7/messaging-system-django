@@ -1,4 +1,6 @@
 import logging
+from django.http import HttpResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -6,11 +8,16 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from .utils import get_messages
+from .utils import get_user_related_messages
 from .serializers import MessageSerializer
 from .filters import MessageFilter
 
 logger = logging.getLogger(__name__)
+
+
+@ensure_csrf_cookie
+def get_csrf_token(request):
+    return HttpResponse('CSRF cookie set')
 
 
 class RootView(APIView):
@@ -77,7 +84,7 @@ class MessageListCreateView(generics.ListCreateAPIView):
         logger.info(f"Retrieving messages for user: {user}")
         is_read = self.request.query_params.get('is_read', None)
         # TODO: modify the get_messages function
-        queryset = get_messages(user)
+        queryset = get_user_related_messages(user)
 
         if is_read is not None:
             # Convert the 'is_read' parameter value to a boolean
@@ -134,7 +141,7 @@ class MessageRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
         """
         user = self.request.user
         logger.info(f"Retrieving messages for user: {user}")
-        return get_messages(user)
+        return get_user_related_messages(user)
 
     def retrieve(self, request, *args, **kwargs):
         """

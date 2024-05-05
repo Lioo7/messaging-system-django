@@ -3,7 +3,7 @@ from django.db import models
 from .models import Message
 
 
-def get_messages(user):
+def get_user_related_messages(user):
     """
     Retrieve messages either sent by or received by the specified user.
 
