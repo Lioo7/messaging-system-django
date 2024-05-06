@@ -1,23 +1,17 @@
 import logging
-from django.http import HttpResponse
-from django.views.decorators.csrf import ensure_csrf_cookie
+
 from rest_framework import generics, status
-from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.views import APIView
+from rest_framework.response import Response
 from rest_framework.reverse import reverse
+from rest_framework.views import APIView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from .utils import get_user_related_messages
-from .serializers import MessageSerializer
 from .filters import MessageFilter
+from .serializers import MessageSerializer
+from .utils import get_user_related_messages
 
 logger = logging.getLogger(__name__)
-
-
-# @ensure_csrf_cookie
-# def get_csrf_token(request):
-#     return HttpResponse('CSRF cookie set')
 
 
 class RootView(APIView):
@@ -36,13 +30,19 @@ class RootView(APIView):
         """
         logger.info("Received request for API root information.")
 
-        return Response({
-            'message': 'Welcome to the Messaging System API!',
-            'endpoints': {
-                'message_list_create': reverse('message:message-list-create', request=request),
-                'message_detail': reverse('message:message-detail', kwargs={'pk': 1}, request=request)
+        return Response(
+            {
+                "message": "Welcome to the Messaging System API!",
+                "endpoints": {
+                    "message_list_create": reverse(
+                        "message:message-list-create", request=request
+                    ),
+                    "message_detail": reverse(
+                        "message:message-detail", kwargs={"pk": 1}, request=request
+                    ),
+                },
             }
-        })
+        )
 
 
 class MessageListCreateView(generics.ListCreateAPIView):
@@ -73,13 +73,12 @@ class MessageListCreateView(generics.ListCreateAPIView):
         """
         user = self.request.user
         logger.info(f"Retrieving messages for user: {user}")
-        is_read = self.request.query_params.get('is_read', None)
-        # TODO: modify the get_messages function
+        is_read = self.request.query_params.get("is_read", None)
         queryset = get_user_related_messages(user)
 
         if is_read is not None:
             # Convert the 'is_read' parameter value to a boolean
-            is_read_bool = is_read.lower() == 'true/'
+            is_read_bool = is_read.lower() == "true/"
             # Filter the queryset based on whether the message is read or unread
             queryset = queryset.filter(receiver=user, is_read=is_read_bool)
 
@@ -160,8 +159,13 @@ class MessageRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
         instance = self.get_object()
 
         if instance.sender != request.user:
-            logger.warning(f"User {request.user} attempted to update message {instance.id} but is not authorized.")
-            return Response({"message": "You are not authorized to update this message."}, status=status.HTTP_403_FORBIDDEN)
+            logger.warning(
+                f"User {request.user} attempted to update message {instance.id} but is not authorized."
+            )
+            return Response(
+                {"message": "You are not authorized to update this message."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
 
         serializer = self.get_serializer(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
@@ -182,4 +186,7 @@ class MessageRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
         logger.info(f"Deleting message {instance.id} by user {request.user}")
         self.perform_destroy(instance)
 
-        return Response({"message": "Message deleted successfully."}, status=status.HTTP_204_NO_CONTENT)
+        return Response(
+            {"message": "Message deleted successfully."},
+            status=status.HTTP_204_NO_CONTENT,
+        )

@@ -10,10 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-import os
 import logging.config
-from dotenv import load_dotenv
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
@@ -26,12 +27,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['54.235.55.114', 'messaging-system-django.onrender.com', 'localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = [
+    "54.235.55.114",
+    "messaging-system-django.onrender.com",
+    "localhost",
+    "127.0.0.1",
+    "0.0.0.0",
+]
 
 
 # Application definition
@@ -111,13 +118,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
     ],
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
 
 # Internationalization
@@ -135,8 +142,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -145,35 +152,33 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Logging configuration
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LOGS_DIR = os.path.join(BASE_DIR, 'logs')
+LOGS_DIR = os.path.join(BASE_DIR, "logs")
 
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(LOGS_DIR, 'logger.log'),
-            'formatter': 'simple',
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(LOGS_DIR, "logger.log"),
+            "formatter": "simple",
         },
     },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'INFO',
-            'propagate': True,
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "INFO",
+            "propagate": True,
         },
-        'message': {
-            'handlers': ['file'],
-            'level': 'INFO',
-            'propagate': True,
+        "message": {
+            "handlers": ["file"],
+            "level": "INFO",
+            "propagate": True,
         },
     },
-    'formatters': {
-        'simple': {
-            'format': '%(asctime)s - %(levelname)s - %(message)s'
-        },
+    "formatters": {
+        "simple": {"format": "%(asctime)s - %(levelname)s - %(message)s"},
     },
 }
 
