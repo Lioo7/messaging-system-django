@@ -1,7 +1,9 @@
 from django.test import TestCase
+from django.urls import reverse
 from django.contrib.auth.models import User
 from rest_framework.test import APIClient
 from rest_framework import status
+
 
 from .models import Message
 
@@ -51,7 +53,8 @@ class MessageAPITests(TestCase):
     def test_create_message_api_success(self):
         # Test successful creation of a message
         data = {'sender': self.user_a.id, 'receiver': self.user_b.id, 'subject': 'Test Subject', 'content': 'Test Content'}
-        response = self.client.post('/api/v1/messages/', data)
+        url = reverse('message:message-list-create')
+        response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         # Check that the message was created in the database
@@ -65,38 +68,44 @@ class MessageAPITests(TestCase):
     def test_create_message_api_invalid_data(self):
         # Test creation of a message with invalid data
         data = {'sender': self.user_a.id, 'receiver': self.user_b.id}  # Missing 'subject' and 'content' fields
-        response = self.client.post('/api/v1/messages/', data)
+        url = reverse('message:message-list-create')
+        response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_get_all_messages_api(self):
         # Test retrieving all messages
-        response = self.client.get('/api/v1/messages/')
+        url = reverse('message:message-list-create')
+        response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 3)
 
     def test_filter_messages_api(self):
         # Test retrieving unread messages (which the receiver is the authenticated user)
-        response = self.client.get('/api/v1/messages/?is_read=false/')
+        url = reverse('message:message-list-create') + '?is_read=false/'
+        response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 1)  # Ensure only one unread message is returned
 
     def test_read_message_api_success(self):
         # Test reading a message
         message_id = self.messages[1].id # The second message
-        response = self.client.get(f'/api/v1/messages/{message_id}/')
+        url = reverse('message:message-detail', kwargs={'pk': message_id})
+        response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(response.data['is_read'])  # Ensure the message is marked as read
 
     def test_read_message_api_message_not_found(self):
         # Test reading a message that doesn't exist
-        response = self.client.get('/api/v1/messages/99999/')
+        url = reverse('message:message-detail', kwargs={'pk': 99999})
+        response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_update_message_api_put(self):
         # Test updating a message using PUT method
         message_id = self.messages[0].id  # The first message
         data = {'sender': self.user_a.id, 'receiver': self.user_b.id, 'subject': 'Updated Subject', 'content': 'Updated Content'}
-        response = self.client.put(f'/api/v1/messages/{message_id}/', data)
+        url = reverse('message:message-detail', kwargs={'pk': message_id})
+        response = self.client.put(url, data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         # Check that the message was updated in the database
@@ -108,14 +117,16 @@ class MessageAPITests(TestCase):
         # Test attempting to update another user's message using PUT method
         message_id = self.messages[1].id  # The second message
         data = {'sender': self.user_b.id, 'receiver': self.user_a.id, 'subject': 'Updated Subject', 'content': 'Updated Content'}
-        response = self.client.put(f'/api/v1/messages/{message_id}/', data)
+        url = reverse('message:message-detail', kwargs={'pk': message_id})
+        response = self.client.put(url, data)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_update_message_api_patch(self):
         # Test updating a message using PATCH method
         message_id = self.messages[0].id  # The first message
         data = {'subject': 'Updated Subject', 'content': 'Updated Content'}
-        response = self.client.patch(f'/api/v1/messages/{message_id}/', data)
+        url = reverse('message:message-detail', kwargs={'pk': message_id})
+        response = self.client.patch(url, data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         # Check that the message was updated in the database
@@ -127,13 +138,15 @@ class MessageAPITests(TestCase):
         # Test attempting to update another user's message using PATCH method
         message_id = self.messages[1].id  # The second message
         data = {'subject': 'Updated Subject', 'content': 'Updated Content'}
-        response = self.client.patch(f'/api/v1/messages/{message_id}/', data)
+        url = reverse('message:message-detail', kwargs={'pk': message_id})
+        response = self.client.patch(url, data)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_delete_message_api_success(self):
         # Test deleting a message
         message_id = self.messages[1].id # The second message
-        response = self.client.delete(f'/api/v1/messages/{message_id}/')
+        url = reverse('message:message-detail', kwargs={'pk': message_id})
+        response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         # Ensure the message is deleted
@@ -142,24 +155,28 @@ class MessageAPITests(TestCase):
 
     def test_delete_message_api_message_not_found(self):
         # Test deleting a message that doesn't exist
-        response = self.client.delete('/api/v1/messages/99999/')
+        url = reverse('message:message-detail', kwargs={'pk': 99999})
+        response = self.client.patch(url)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_delete_message_by_unrelated_user_api_forbidden(self):
         # Test attempting to delete a message by a user who is neither the sender nor the receiver
         message_id = self.messages[3].id  # The fourth message
-        response = self.client.delete(f'/api/v1/messages/{message_id}/')
+        url = reverse('message:message-detail', kwargs={'pk': message_id})
+        response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_unauthenticated_access(self):
         # Test accessing API endpoints without authentication
         self.client.force_authenticate(user=None)  # Remove authentication
         # Attempt to access the messages list endpoint
-        response = self.client.get('/api/v1/messages/')
+        url = reverse('message:message-list-create')
+        response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         # Attempt to access a specific message endpoint
         message_id = self.messages[0].id
-        response = self.client.get(f'/api/v1/messages/{message_id}/')
+        url = reverse('message:message-detail', kwargs={'pk': message_id})
+        response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
