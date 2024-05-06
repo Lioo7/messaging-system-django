@@ -3,9 +3,9 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.reverse import reverse
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
+from rest_framework.reverse import reverse
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .utils import get_user_related_messages
@@ -15,14 +15,14 @@ from .filters import MessageFilter
 logger = logging.getLogger(__name__)
 
 
-@ensure_csrf_cookie
-def get_csrf_token(request):
-    return HttpResponse('CSRF cookie set')
+# @ensure_csrf_cookie
+# def get_csrf_token(request):
+#     return HttpResponse('CSRF cookie set')
 
 
 class RootView(APIView):
     """
-    API endpoint to provide root information about the Messaging System API.
+    API endpoint to provide a list of all available API endpoints.
     """
 
     permission_classes = []  # Allow unauthenticated access
@@ -36,20 +36,11 @@ class RootView(APIView):
         """
         logger.info("Received request for API root information.")
 
-        # Assuming there is a message instance with pk=1
-        message_pk = 1
         return Response({
             'message': 'Welcome to the Messaging System API!',
             'endpoints': {
-                'messages': {
-                    'list_create': reverse('message-list-create', request=request),
-                    'retrieve_update_destroy': reverse('message-detail', kwargs={'pk': message_pk}, request=request),
-                },
-                'token': {
-                    'obtain': reverse('token_obtain_pair', request=request,),
-                    'refresh': reverse('token_refresh', request=request),
-                },
-                'csrf_cookie': reverse('csrf_cookie', request=request),
+                'message_list_create': reverse('message:message-list-create', request=request),
+                'message_detail': reverse('message:message-detail', kwargs={'pk': 1}, request=request)
             }
         })
 

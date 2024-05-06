@@ -163,7 +163,7 @@ class MessageAPITests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
-class CsrfCookieEndpointTests(TestCase):
-    def test_csrf_cookie_endpoint(self):
-        response = self.client.get('/api/v1/csrf_cookie/')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+# class CsrfCookieEndpointTests(TestCase):
+#     def test_csrf_cookie_endpoint(self):
+#         response = self.client.get('/api/v1/csrf_cookie/')
+#         self.assertEqual(response.status_code, status.HTTP_200_OK)
