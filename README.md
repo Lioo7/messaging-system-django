@@ -20,16 +20,11 @@ Visit the website to explore the Messaging System API: [Messaging System API](ht
 - **Get All Messages**: Authenticated users can retrieve a comprehensive list of all messages they've sent or received.
 - **Get Unread Messages**: Authenticated users can obtain a list of unread messages they've received.
 - **Read Message**: Authenticated users can mark a message as read and access its details.
-- **Delete Message**: Authenticated users can remove messages they've sent or received.
-- **Authentication**: The API leverages JWT (JSON Web Tokens) for authentication, ensuring that only authenticated users can execute actions.
+- **Update Message**: Authenticated users who are the senders can modify existing messages.
+- **Partial Update Message**: Authenticated users who are the senders can partially update existing messages.
+- **Delete Message**: Authenticated users who are the senders or the receivers can remove messages they've sent or received.
+- **User Registration**: Unauthenticated users can register new accounts via the "/api/v1/users/register/" endpoint.
 
-## Technologies Used
-
-- **Django**: A high-level Python web framework for developing web applications.
-- **Django REST Framework**: A versatile toolkit for building Web APIs.
-- **Docker**: A platform for developing, shipping, and running applications in containers.
-- **JWT (JSON Web Tokens)**: An authentication standard used to secure the API.
-- **Python**: The programming language used for development.
 
 ## Getting Started (Development Environment)
 
@@ -52,12 +47,15 @@ Visit the website to explore the Messaging System API: [Messaging System API](ht
 
 3. **Creating Super User and Other Users**:
    - A superuser (admin) will be created automatically during Docker container startup using the credentials provided in the `.env` file.
-   - Additional users can be created programmatically through Django's shell or management commands.
+   - Additional users can be created via the "/api/v1/accounts/register/" endpoint.
+
+4. **Logging**:
+   - This project includes a logging system to track important events and messages during runtime. Logging configurations are defined in the   `settings.py` file, allowing developers to customize logging levels and output formats as needed. By default, logs are stored in the `logs/` directory.
 
 
 ## Postman Collection
 
-Explore the Postman collection provided in the project repository to test the API. It encompasses examples for all API endpoints.
+Explore the Postman collections provided in the project repository to test the API. They encompass examples for all API endpoints, differentiated for development and production environments.
 
 The API relies on JWT (JSON Web Tokens) for authentication. Upon logging in, users receive an access token and a refresh token. The access token authenticates requests. Include the access token in the `Authorization` header of your requests as follows:
 ```
@@ -71,3 +69,8 @@ Run the following command to execute the tests:
 ```
 python manage.py test
 ```
+
+## Entity-Relationship Diagram (ERD)
+This ERD illustrates the relationship between the "Message" and "User" models within the Messaging System API.
+
+![ERD Diagram](https://i.ibb.co/gSBJFNh/messaging-app-erd.png)
