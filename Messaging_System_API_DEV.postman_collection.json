@@ -1,0 +1,1157 @@
+{
+	"info": {
+		"_postman_id": "1f88282a-34eb-44bd-aeed-1ab0496416fc",
+		"name": "Messaging_System_API_DEV",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17892869"
+	},
+	"item": [
+		{
+			"name": "Obtain Access Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "JHkXs15fZGUnZMscxcHrM05Du50XE9Ik",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser2\",\n    \"password\": \"DPj4i7YwgZyN5fL\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/token/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"token",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtain Access Token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"z7KMAZhnBpUgJEL\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://54.235.55.114:8000/api/token/",
+							"protocol": "http",
+							"host": [
+								"54",
+								"235",
+								"55",
+								"114"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "gunicorn"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 Apr 2024 20:07:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "483"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxMzI5ODAyOCwiaWF0IjoxNzEzMjExNjI4LCJqdGkiOiJkOWJhZjkyOTZjMzY0NzExOGZmN2U3ZjZmM2JlYTU2NiIsInVzZXJfaWQiOjJ9.Do9aNm6sDwJoH9qpQ1ft1BvzKfSjYvFWzdopaXDZLEM\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMjExOTI4LCJpYXQiOjE3MTMyMTE2MjgsImp0aSI6ImViOGYwZTJlYThiYzRhYjU4NDAwZmFlOGYxMTA3ZmJmIiwidXNlcl9pZCI6Mn0.XSsViSHN_DMmKFvgXiBKZqN0OY1Zf5NPOVBcJAiNEmU\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Renew Access Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNDkyNzU0NCwiaWF0IjoxNzE0ODQxMTQ0LCJqdGkiOiJkYzc3MTM4M2Y5MGE0ZWM5ODNjMzBhYmJmY2FlMzJhNCIsInVzZXJfaWQiOjJ9.VUdtXlqScofDH_TgjwL3mDLgXNkehExgRxZcQCEK5QQ\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/token/refresh/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Renew Access Token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxMzI5ODAyOCwiaWF0IjoxNzEzMjExNjI4LCJqdGkiOiJkOWJhZjkyOTZjMzY0NzExOGZmN2U3ZjZmM2JlYTU2NiIsInVzZXJfaWQiOjJ9.Do9aNm6sDwJoH9qpQ1ft1BvzKfSjYvFWzdopaXDZLEM\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://54.235.55.114:8000/api/token/refresh/",
+							"protocol": "http",
+							"host": [
+								"54",
+								"235",
+								"55",
+								"114"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								"refresh",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "gunicorn"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 Apr 2024 20:09:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "241"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMjEyMDY2LCJpYXQiOjE3MTMyMTE2MjgsImp0aSI6IjdjNTNhZjQwMzMwNjQ0ZGM5MzcyZDQ1OWQ2OTQzNGZmIiwidXNlcl9pZCI6Mn0.ks6nktOsIkudm1BUzVh9Fs2EXahDu6ii1Ir3u1eqP7o\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Send Message",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE0OTIwMzQ3LCJpYXQiOjE3MTQ5MjAwNDcsImp0aSI6IjA1ZWQ2MWE4ZjU1NjQ2MzBiZDE3OThhOGQ0NjQ2NTQ2IiwidXNlcl9pZCI6NH0.msQANzrny82qUK9qTQvVWFZG_B05b9-CTLlMUDRnViw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"sender\": 4,\n  \"receiver\": 1,\n  \"subject\": \"Test Message - #11\",\n  \"content\": \"This is a test message.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/messages/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"messages",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Send Message",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sender\": 2,\n  \"receiver\": 1,\n  \"subject\": \"Test Message - response #8\",\n  \"content\": \"This is a test message.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/messages/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"messages",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 05 May 2024 01:13:18 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "171"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 4,\n    \"sender\": 2,\n    \"receiver\": 1,\n    \"subject\": \"Test Message - response #8\",\n    \"content\": \"This is a test message.\",\n    \"created_at\": \"2024-05-05T04:13:18.092991+03:00\",\n    \"is_read\": false\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Messages",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE0ODczNDU4LCJpYXQiOjE3MTQ4NzMxNTgsImp0aSI6ImJiZjQxOWJiYzcyYzRjNGY4OTBmZTc3NWMzYTAzM2QwIiwidXNlcl9pZCI6MX0.K3mhGE8jE4PgpXSNRDiN6qbnHUcVq9MGOG9ahx5GgGs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/messages/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"messages",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All Messages",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/messages/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"messages",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 05 May 2024 01:13:40 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "702"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 3,\n        \"sender\": 2,\n        \"receiver\": 1,\n        \"subject\": \"Test Message - response #7 - PATCH\",\n        \"content\": \"This is a test message - PUT.\",\n        \"created_at\": \"2024-05-04T19:46:41.896942+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 4,\n        \"sender\": 2,\n        \"receiver\": 1,\n        \"subject\": \"Test Message - response #8\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-05-05T04:13:18.092991+03:00\",\n        \"is_read\": false\n    },\n    {\n        \"id\": 1,\n        \"sender\": 1,\n        \"receiver\": 2,\n        \"subject\": \"Test Message - response #5\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-05-04T19:40:14.441390+03:00\",\n        \"is_read\": true\n    },\n    {\n        \"id\": 2,\n        \"sender\": 1,\n        \"receiver\": 2,\n        \"subject\": \"Test Message - response #6\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-05-04T19:40:44.320315+03:00\",\n        \"is_read\": false\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Unread Messages",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE0ODcxODc5LCJpYXQiOjE3MTQ4NzE1NzksImp0aSI6ImU2NTk0NDgzNWEzMTQ0OWNiMTZjYzJkMTA4NGIwOTk2IiwidXNlcl9pZCI6Mn0.W1rLfH6Ci99jSrlh3oj6UbVMJA2p_c3lPbZgyafG6-o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/messages/?is_read=false/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"messages",
+						""
+					],
+					"query": [
+						{
+							"key": "is_read",
+							"value": "false/"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Unread Messages",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/messages/?is_read=false/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"messages",
+								""
+							],
+							"query": [
+								{
+									"key": "is_read",
+									"value": "false/"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 05 May 2024 01:14:18 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "173"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 2,\n        \"sender\": 1,\n        \"receiver\": 2,\n        \"subject\": \"Test Message - response #6\",\n        \"content\": \"This is a test message.\",\n        \"created_at\": \"2024-05-04T19:40:44.320315+03:00\",\n        \"is_read\": false\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Read Message",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE0ODcxODc5LCJpYXQiOjE3MTQ4NzE1NzksImp0aSI6ImU2NTk0NDgzNWEzMTQ0OWNiMTZjYzJkMTA4NGIwOTk2IiwidXNlcl9pZCI6Mn0.W1rLfH6Ci99jSrlh3oj6UbVMJA2p_c3lPbZgyafG6-o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/messages/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"messages",
+						"1",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Read Message",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/messages/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"messages",
+								"1",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 05 May 2024 01:14:37 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "170"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"sender\": 1,\n    \"receiver\": 2,\n    \"subject\": \"Test Message - response #5\",\n    \"content\": \"This is a test message.\",\n    \"created_at\": \"2024-05-04T19:40:14.441390+03:00\",\n    \"is_read\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Message",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE0ODczNDU4LCJpYXQiOjE3MTQ4NzMxNTgsImp0aSI6ImJiZjQxOWJiYzcyYzRjNGY4OTBmZTc3NWMzYTAzM2QwIiwidXNlcl9pZCI6MX0.K3mhGE8jE4PgpXSNRDiN6qbnHUcVq9MGOG9ahx5GgGs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/messages/7/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"messages",
+						"7",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Message",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/messages/7/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"messages",
+								"7",
+								""
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 05 May 2024 01:40:04 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Message deleted successfully.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Message (PUT)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE0ODcxNjk1LCJpYXQiOjE3MTQ4NzEzOTUsImp0aSI6IjA3NTA3NTI4NWQ1NDQxY2FhNGJmNTQ3ZmNlMGJiYTg4IiwidXNlcl9pZCI6Mn0.TO0wQOWVTeuSDVWEk4dHOYIn4f5iKV0p_Oja96jcrIU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sender\": 2,\n    \"receiver\": 1,\n    \"subject\": \"Test Message - response #7 - PUT\",\n    \"content\": \"This is a test message - PUT.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/messages/3/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"messages",
+						"3",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Message (PUT)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sender\": 2,\n    \"receiver\": 1,\n    \"subject\": \"Test Message - response #7 - PUT\",\n    \"content\": \"This is a test message - PUT.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/messages/3/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"messages",
+								"3",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 05 May 2024 01:11:06 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "183"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"sender\": 2,\n    \"receiver\": 1,\n    \"subject\": \"Test Message - response #7 - PUT\",\n    \"content\": \"This is a test message - PUT.\",\n    \"created_at\": \"2024-05-04T19:46:41.896942+03:00\",\n    \"is_read\": false\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Message (PATCH)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE0ODcyOTE3LCJpYXQiOjE3MTQ4NzI2MTcsImp0aSI6ImEyZmY1MWZjMzAyYzQzMjI4NjI4MzBjZmJjZjU4ZmEyIiwidXNlcl9pZCI6MX0.rvQ9gqIH9sdyaU7RfI8jPaqHTCVpApdvQ69db0G7u_I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sender\": 2,\n    \"receiver\": 1,\n    \"subject\": \"Test Message - response #5 - PATCH\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/messages/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"messages",
+						"1",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Message (PATCH)",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sender\": 2,\n    \"receiver\": 1,\n    \"subject\": \"Test Message - response #7 - PATCH\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/messages/3/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"messages",
+								"3",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 05 May 2024 01:12:00 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "185"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"sender\": 2,\n    \"receiver\": 1,\n    \"subject\": \"Test Message - response #7 - PATCH\",\n    \"content\": \"This is a test message - PUT.\",\n    \"created_at\": \"2024-05-04T19:46:41.896942+03:00\",\n    \"is_read\": false\n}"
+				}
+			]
+		},
+		{
+			"name": "User Registration",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser4\",\n    \"email\": \"testuser@example.com\",\n    \"password\": \"testpassword\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/accounts/register/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"register",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"testuser4\",\n    \"email\": \"testuser@example.com\",\n    \"password\": \"testpassword\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/accounts/register/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"register",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 06 May 2024 00:11:40 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "55"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"User registration successful.\",\n    \"user_id\": 6\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "cookie",
+			"value": "csrftoken=JHkXs15fZGUnZMscxcHrM05Du50XE9Ik; expires=Sat, 03 May 2025 16:21:55 GMT; Max-Age=31449600; Path=/; SameSite=Lax"
+		}
+	]
+}
