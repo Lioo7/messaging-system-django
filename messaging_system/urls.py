@@ -10,6 +10,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/v1/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("", include("messaging_system.swagger_urls")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
