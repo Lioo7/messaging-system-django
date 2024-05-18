@@ -15,6 +15,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /code/
 
+# Run collectstatic during container build
+RUN python manage.py collectstatic --noinput
+
 # Entrypoint script to create superuser
 COPY entrypoint.sh /code/entrypoint.sh
 RUN chmod +x /code/entrypoint.sh
