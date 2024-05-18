@@ -3,46 +3,14 @@ import logging
 from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.reverse import reverse
-from rest_framework.views import APIView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .filters import MessageFilter
+from .models import Message
 from .serializers import MessageSerializer
 from .utils import get_user_related_messages
 
 logger = logging.getLogger(__name__)
-
-
-class RootView(APIView):
-    """
-    API endpoint to provide a list of all available API endpoints.
-    """
-
-    permission_classes = []  # Allow unauthenticated access
-
-    def get(self, request):
-        """
-        Get method to provide information about the API endpoints.
-
-        Returns:
-        - Response: A response containing information about the API endpoints.
-        """
-        logger.info("Received request for API root information.")
-
-        return Response(
-            {
-                "message": "Welcome to the Messaging System API!",
-                "endpoints": {
-                    "message_list_create": reverse(
-                        "message:message-list-create", request=request
-                    ),
-                    "message_detail": reverse(
-                        "message:message-detail", kwargs={"pk": 1}, request=request
-                    ),
-                },
-            }
-        )
 
 
 class MessageListCreateView(generics.ListCreateAPIView):
@@ -71,6 +39,10 @@ class MessageListCreateView(generics.ListCreateAPIView):
         Returns:
         - QuerySet: A queryset of messages associated with the given user.
         """
+        # Check if this is a swagger_fake_view
+        if getattr(self, "swagger_fake_view", False):
+            return Message.objects.none()
+
         user = self.request.user
         logger.info(f"Retrieving messages for user: {user}")
         is_read = self.request.query_params.get("is_read", None)
@@ -129,6 +101,10 @@ class MessageRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
         Returns:
         - QuerySet: A queryset of messages associated with the given user.
         """
+        # Check if this is a swagger_fake_view
+        if getattr(self, "swagger_fake_view", False):
+            return Message.objects.none()
+
         user = self.request.user
         logger.info(f"Retrieving messages for user: {user}")
         return get_user_related_messages(user)

@@ -6,6 +6,7 @@
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker">
   <img src="https://img.shields.io/badge/JSON%20Web%20Tokens-000000?style=flat&logo=jsonwebtokens&logoColor=white" alt="JSON Web Tokens">
+  <img src="https://img.shields.io/badge/Swagger-85EA2D?style=flat&logo=swagger&logoColor=black" alt="Swagger">
 </p>
 
 This Django REST API facilitates a messaging system, enabling users to send, receive, read, and delete messages.
@@ -51,6 +52,13 @@ Visit the website to explore the Messaging System API: [Messaging System API](ht
 
 4. **Logging**:
    - This project includes a logging system to track important events and messages during runtime. Logging configurations are defined in the   `settings.py` file, allowing developers to customize logging levels and output formats as needed. By default, logs are stored in the `logs/` directory.
+
+
+## API Documentation
+
+This project uses **Swagger** for API documentation. Swagger provides a user-friendly interface for exploring and interacting with the API.
+
+To view the Swagger UI, visit `http://localhost:8000/swagger/`.
 
 
 ## Postman Collection

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "django_filters",
+    "drf_yasg",
     "message",
     "accounts",
 ]
@@ -184,3 +185,15 @@ LOGGING = {
 
 # Configure logging
 logging.config.dictConfig(LOGGING)
+
+SWAGGER_SETTINGS = {
+    "USE_SESSION_AUTH": False,
+    "SECURITY_DEFINITIONS": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT Token (e.g., 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9....')",
+        }
+    },
+}
