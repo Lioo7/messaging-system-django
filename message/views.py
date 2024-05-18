@@ -3,11 +3,10 @@ import logging
 from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.reverse import reverse
-from rest_framework.views import APIView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .filters import MessageFilter
+from .models import Message
 from .serializers import MessageSerializer
 from .utils import get_user_related_messages
 
@@ -40,6 +39,10 @@ class MessageListCreateView(generics.ListCreateAPIView):
         Returns:
         - QuerySet: A queryset of messages associated with the given user.
         """
+        # Check if this is a swagger_fake_view
+        if getattr(self, "swagger_fake_view", False):
+            return Message.objects.none()
+
         user = self.request.user
         logger.info(f"Retrieving messages for user: {user}")
         is_read = self.request.query_params.get("is_read", None)
@@ -98,6 +101,10 @@ class MessageRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
         Returns:
         - QuerySet: A queryset of messages associated with the given user.
         """
+        # Check if this is a swagger_fake_view
+        if getattr(self, "swagger_fake_view", False):
+            return Message.objects.none()
+
         user = self.request.user
         logger.info(f"Retrieving messages for user: {user}")
         return get_user_related_messages(user)

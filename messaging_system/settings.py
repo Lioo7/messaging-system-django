@@ -187,13 +187,13 @@ LOGGING = {
 logging.config.dictConfig(LOGGING)
 
 SWAGGER_SETTINGS = {
-    'USE_SESSION_AUTH': False,
-    'SECURITY_DEFINITIONS': {
-        'Bearer': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header',
-            'description': 'JWT Token (e.g., \'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9....\')'
+    "USE_SESSION_AUTH": False,
+    "SECURITY_DEFINITIONS": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT Token (e.g., 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9....')",
         }
     },
 }

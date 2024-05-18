@@ -9,17 +9,13 @@ urlpatterns = [
     # Include your app's URLs
     path("", include("message.urls")),
     path("api/v1/accounts/", include("accounts.urls")),
-
     # Include Swagger URLs
     path("", include("messaging_system.swagger_urls")),
-
     # Django admin
     path("admin/", admin.site.urls),
-
     # JWT token URLs
     path("api/v1/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/v1/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-
     # Redirect root URL to Swagger page
     path("", RedirectView.as_view(url="/swagger/", permanent=False)),
 ]

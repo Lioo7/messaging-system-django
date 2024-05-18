@@ -15,4 +15,4 @@ class MessageSerializer(serializers.ModelSerializer):
             "created_at",
             "is_read",
         ]
-        read_only_fields = ['sender', 'is_read']
+        read_only_fields = ["sender", "is_read"]
