@@ -14,37 +14,6 @@ from .utils import get_user_related_messages
 logger = logging.getLogger(__name__)
 
 
-class RootView(APIView):
-    """
-    API endpoint to provide a list of all available API endpoints.
-    """
-
-    permission_classes = []  # Allow unauthenticated access
-
-    def get(self, request):
-        """
-        Get method to provide information about the API endpoints.
-
-        Returns:
-        - Response: A response containing information about the API endpoints.
-        """
-        logger.info("Received request for API root information.")
-
-        return Response(
-            {
-                "message": "Welcome to the Messaging System API!",
-                "endpoints": {
-                    "message_list_create": reverse(
-                        "message:message-list-create", request=request
-                    ),
-                    "message_detail": reverse(
-                        "message:message-detail", kwargs={"pk": 1}, request=request
-                    ),
-                },
-            }
-        )
-
-
 class MessageListCreateView(generics.ListCreateAPIView):
     """
     API endpoint for listing and creating messages.
