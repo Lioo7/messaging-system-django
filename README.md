@@ -29,7 +29,7 @@ Visit the website to explore the Messaging System API: [Messaging System API](ht
 
 ## Getting Started (Development Environment)
 
-1. **Setting up the Development Environment**:
+1. **Setting up**:
    - Install Docker on your machine.
    - Clone this repository.
    - Navigate to the project directory.
