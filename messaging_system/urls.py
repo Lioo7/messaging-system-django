@@ -6,12 +6,12 @@ from django.views.generic import RedirectView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
-    # Redirect root URL to Swagger page
-    path("", RedirectView.as_view(url="/swagger/", permanent=False)),
-
     # Include your app's URLs
-    path("message/", include("message.urls")),  # Adjust if necessary
+    path("", include("message.urls")),
     path("api/v1/accounts/", include("accounts.urls")),
+
+    # Include Swagger URLs
+    path("", include("messaging_system.swagger_urls")),
 
     # Django admin
     path("admin/", admin.site.urls),
@@ -20,8 +20,8 @@ urlpatterns = [
     path("api/v1/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/v1/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 
-    # Include Swagger URLs
-    path("", include("messaging_system.swagger_urls")),
+    # Redirect root URL to Swagger page
+    path("", RedirectView.as_view(url="/swagger/", permanent=False)),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
