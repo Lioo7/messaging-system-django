@@ -1,11 +1,10 @@
 from django.urls import path
 
-from .views import MessageListCreateView, MessageRetrieveUpdateDestroyView, RootView
+from .views import MessageListCreateView, MessageRetrieveUpdateDestroyView
 
 app_name = "message"
 
 urlpatterns = [
-    path("", RootView.as_view(), name="api-root"),
     path(
         "api/v1/messages/", MessageListCreateView.as_view(), name="message-list-create"
     ),

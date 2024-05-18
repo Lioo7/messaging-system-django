@@ -7,7 +7,7 @@ schema_view = get_schema_view(
     openapi.Info(
         title="Messaging System API",
         default_version="v1",
-        description="API for the Messaging System",
+        description="API for a Messaging System",
     ),
     public=True,
     permission_classes=[permissions.AllowAny],
